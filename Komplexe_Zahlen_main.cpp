@@ -14,6 +14,6 @@ int main()
   std::cout << "Komplex Zahl a: " << a << std::endl;
   std::cout << "Komplex Zahl b: " << b << std::endl;
   std::cout << "Komplex Zahl c: " << c << std::endl;
-  std::cout << b.betragKomplex() << std::endl;
+  b.Polardarstellung();
   return 0;
 }

@@ -43,6 +43,6 @@ class Komplex
     friend std::ostream& operator<< (std::ostream& stream, const Komplex& output );
     friend std::istream& operator>> (std::istream& stream, Komplex& input );
 
-    Komplex Polardarstellung();
+    void Polardarstellung();
 
 };
