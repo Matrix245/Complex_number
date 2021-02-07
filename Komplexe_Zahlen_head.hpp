@@ -38,7 +38,7 @@ class Komplex
     //@brief: überladen des * operator um damit eine Komplexe Zahl mit einem Skalaren zu multiplizieren
     //@parameter: nimmt den zu Multiplizierenden Skalaren als Fließkommerzahl
     //@return: gibt das Ergebnis des Realteils und Imaginaerteils als Komplexe Zahl zurück
-    Komplex operator*(double rhs);
+    Komplex operator*(double& rhs);
 
     friend std::ostream& operator<< (std::ostream& stream, const Komplex& output );
     friend std::istream& operator>> (std::istream& stream, Komplex& input );
@@ -46,3 +46,18 @@ class Komplex
     void Polardarstellung();
 
 };
+/*
+class KomplexND : public Komplex
+{
+  private:
+    Komplex* data;
+
+
+  public:
+    KomplexND(unsigned long int size);
+
+    ~KomplexND();
+
+    KomplexND add(KomplexND lhs,KomplexND rhs);
+
+};*/

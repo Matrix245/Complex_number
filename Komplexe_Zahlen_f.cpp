@@ -44,10 +44,11 @@ Komplex Komplex::operator*(Komplex rhs)
   return Komplex(realErg,imagErg);
 }
 
-Komplex Komplex::operator*(double rhs)
+Komplex Komplex::operator*(double& rhs)
 {
   return Komplex(realT*rhs,imagT*rhs);
 }
+
 
 std::ostream& operator<< (std::ostream& stream, const Komplex& output )
 {
@@ -87,5 +88,23 @@ void Komplex::Polardarstellung()
   }
 
   std::cout << Betrag << "(" << "cos(" << Winkel_Bogenm << ")" << " + "
-  << "i" << "sin(" << Winkel_Bogenm << "))" << std::endl; 
+  << "i" << "sin(" << Winkel_Bogenm << "))" << std::endl;
 }
+/*
+KomplexND::KomplexND(unsigned long int size)
+{
+  data = new Komplex[size];
+}
+
+
+
+KomplexND::~KomplexND()
+{
+  delete data;
+}
+
+
+KomplexND add(KomplexND lhs,KomplexND rhs)
+{
+
+}*/
