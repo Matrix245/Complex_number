@@ -90,21 +90,3 @@ void Komplex::Polardarstellung()
   std::cout << Betrag << "(" << "cos(" << Winkel_Bogenm << ")" << " + "
   << "i" << "sin(" << Winkel_Bogenm << "))" << std::endl;
 }
-/*
-KomplexND::KomplexND(unsigned long int size)
-{
-  data = new Komplex[size];
-}
-
-
-
-KomplexND::~KomplexND()
-{
-  delete data;
-}
-
-
-KomplexND add(KomplexND lhs,KomplexND rhs)
-{
-
-}*/

@@ -46,18 +46,3 @@ class Komplex
     void Polardarstellung();
 
 };
-/*
-class KomplexND : public Komplex
-{
-  private:
-    Komplex* data;
-
-
-  public:
-    KomplexND(unsigned long int size);
-
-    ~KomplexND();
-
-    KomplexND add(KomplexND lhs,KomplexND rhs);
-
-};*/
