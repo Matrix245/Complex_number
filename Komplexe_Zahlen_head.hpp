@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 class Komplex
 {
@@ -46,3 +47,23 @@ class Komplex
     void Polardarstellung();
 
 };
+
+class KomplexND
+{
+  private:
+    unsigned long int size;
+    std::vector<Komplex> vektorK;
+
+  public:
+    KomplexND(unsigned long int s);
+
+    KomplexND(std::vector<Komplex>v);
+
+    Komplex atK(unsigned long int i);
+
+    unsigned long int Size();
+
+    KomplexND operator+(KomplexND rhs);
+};
+
+class out_of_rang{};

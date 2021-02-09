@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <vector>
 #include "Komplexe_Zahlen_head.hpp"
 
 Komplex::Komplex()
@@ -52,13 +53,14 @@ Komplex Komplex::operator*(double& rhs)
 
 std::ostream& operator<< (std::ostream& stream, const Komplex& output )
 {
-  stream.precision(2);
-  stream << std::showpoint <<"( " << output.getRealT() << " " << output.getImagT() << " )";
+
+  stream <<"( " << output.getRealT() << " " << output.getImagT() << " )";
   return stream;
 }
 
 std::istream& operator>> (std::istream& stream, Komplex& input )
 {
+  //Fehlermeldung wenn es keine Double zahl ist (buchstaben Sonderzeichen Steuerzeichen Satzzeichen ungültig)
   return stream >> input.realT >> input.imagT;
 }
 
@@ -89,4 +91,57 @@ void Komplex::Polardarstellung()
 
   std::cout << Betrag << "(" << "cos(" << Winkel_Bogenm << ")" << " + "
   << "i" << "sin(" << Winkel_Bogenm << "))" << std::endl;
+}
+
+KomplexND::KomplexND(unsigned long int s)
+{
+  //Fehlermeldung bei size "s < 0 ?"
+  size = s;
+  std::vector<Komplex>v(s,Komplex(0,0));
+  vektorK = v;
+}
+
+KomplexND::KomplexND(std::vector<Komplex>v)
+{
+  size = v.size();
+  vektorK = v;
+}
+
+Komplex KomplexND::atK(unsigned long int i)
+{
+  //Fehlermeldung "out of range"
+  try{
+    if(i > size-1 || i < (size-size))
+    {
+      throw out_of_rang();
+    }
+
+    else
+    {
+      return vektorK[i];
+    }
+
+  }
+  catch(out_of_rang)
+  {
+    std::cout << "Index außerhalb der Vektorgröße ";
+  }
+  return Komplex(-1,-1);
+}
+
+unsigned long int KomplexND::Size()
+{
+  return size;
+}
+
+KomplexND KomplexND::operator+(KomplexND rhs)
+{
+  //Fehlermeldung wenn size nicht übereinstimmt mit rhs.Size() und size
+  std::vector<Komplex> Erg(size);
+  for(unsigned long int i = 0; i < size;i++)
+  {
+    Erg.at(i) = vektorK[i] + rhs.atK(i);
+  }
+
+  return KomplexND(Erg);
 }
