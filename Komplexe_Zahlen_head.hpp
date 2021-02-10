@@ -67,3 +67,4 @@ class KomplexND
 };
 
 class out_of_rang{};
+class NaN{};

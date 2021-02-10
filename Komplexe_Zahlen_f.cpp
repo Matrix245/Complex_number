@@ -61,7 +61,9 @@ std::ostream& operator<< (std::ostream& stream, const Komplex& output )
 std::istream& operator>> (std::istream& stream, Komplex& input )
 {
   //Fehlermeldung wenn es keine Double zahl ist (buchstaben Sonderzeichen Steuerzeichen Satzzeichen ungültig)
-  return stream >> input.realT >> input.imagT;
+
+  stream >>input.realT >> input.imagT;
+  return stream;
 }
 
 void Komplex::Polardarstellung()
@@ -95,10 +97,18 @@ void Komplex::Polardarstellung()
 
 KomplexND::KomplexND(unsigned long int s)
 {
-  //Fehlermeldung bei size "s < 0 ?"
-  size = s;
-  std::vector<Komplex>v(s,Komplex(0,0));
-  vektorK = v;
+  //Fehlermeldung wenn s eine negative Zahl ist
+  try
+  {
+    size = s;
+    std::vector<Komplex>v(s,Komplex(0,0));
+    vektorK = v;
+  }
+
+  catch(std::bad_alloc)
+  {
+    std::cout << "Initialisierung von KomplexND stimmt nicht. Bitte überprüfen"<<std::endl;
+  }
 }
 
 KomplexND::KomplexND(std::vector<Komplex>v)
@@ -109,7 +119,7 @@ KomplexND::KomplexND(std::vector<Komplex>v)
 
 Komplex KomplexND::atK(unsigned long int i)
 {
-  //Fehlermeldung "out of range"
+  //Fehlermeldung wenn es außerhalb des index ist
   try{
     if(i > size-1 || i < (size-size))
     {
@@ -124,9 +134,9 @@ Komplex KomplexND::atK(unsigned long int i)
   }
   catch(out_of_rang)
   {
-    std::cout << "Index außerhalb der Vektorgröße ";
+    std::cout << "\nIndex außerhalb der Vektorgröße ";
   }
-  return Komplex(-1,-1);
+  return Komplex(0,0);
 }
 
 unsigned long int KomplexND::Size()
@@ -136,12 +146,25 @@ unsigned long int KomplexND::Size()
 
 KomplexND KomplexND::operator+(KomplexND rhs)
 {
-  //Fehlermeldung wenn size nicht übereinstimmt mit rhs.Size() und size
-  std::vector<Komplex> Erg(size);
-  for(unsigned long int i = 0; i < size;i++)
+  //Fehlermeldung wenn size nicht übereinstimmt mit rhs.Size() und siz
+  try
   {
-    Erg.at(i) = vektorK[i] + rhs.atK(i);
+    if(rhs.Size() != size)
+    {
+      throw out_of_rang();
+    }
+    std::vector<Komplex> Erg(size);
+    for(unsigned long int i = 0; i < size;i++)
+    {
+      Erg.at(i) = vektorK[i] + rhs.atK(i);
+    }
+
+    return KomplexND(Erg);
   }
 
-  return KomplexND(Erg);
+  catch(out_of_rang)
+  {
+    std::cout << "\nDie Vektorgröße der Vektoren stimmen nicht überein ";
+  }
+  return KomplexND(1);
 }
