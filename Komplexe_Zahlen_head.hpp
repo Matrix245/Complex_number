@@ -101,6 +101,7 @@ class KomplexND
     //@parameter: v ist ein std::vector mit dem Datentyp Komplex (enthält nur Komplexe Zahlen) und stellt den Vektor dar
     KomplexND(std::vector<Komplex>v);
 
+    
     //@brief: greift auf einen Index im Feld vektorK zu
     //@parameter: i -> ist der Index auf dem man zugreifen möchte
     //@return: gibt die Komplex Zahl zurück die indiesem index gespeichert ist

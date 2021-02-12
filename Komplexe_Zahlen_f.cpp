@@ -16,6 +16,7 @@ Komplex::Komplex(double r,double i)
 }
 
 
+
 double Komplex::getRealT() const
 {
   return realT;
@@ -121,6 +122,7 @@ KomplexND::KomplexND(std::vector<Komplex>v)
   size = v.size();
   vektorK = v;
 }
+
 
 Komplex KomplexND::atK(unsigned long int i)
 {

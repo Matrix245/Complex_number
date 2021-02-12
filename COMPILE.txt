@@ -1,0 +1,1 @@
+clang++ Komplexe_Zahlen_main.cpp  Komplexe_Zahlen_f.cpp -o Komplextest  -std=c++14 -Weverything  -Wno-c++98-compat

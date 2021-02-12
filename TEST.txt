@@ -1,0 +1,4 @@
+- In der Datei Komplex.exe habe ich alle Funktionen dargestellt
+  - d.h. es sind alle Funktionen dargestellt die ich deklariert und implementiert habe nur
+    in std::cout Ausgabe. In Komplexe_Zahlen_main.cpp ist das geschriebene Programm von
+    Komplex.exe
