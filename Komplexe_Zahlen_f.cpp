@@ -9,7 +9,7 @@ Komplex::Komplex()
   imagT = 0.0;
 }
 
-Komplex::Komplex(double r, double i)
+Komplex::Komplex(double r,double i)
 {
   realT = r;
   imagT = i;
@@ -45,7 +45,12 @@ Komplex Komplex::operator*(Komplex rhs)
   return Komplex(realErg,imagErg);
 }
 
-Komplex Komplex::operator*(double& rhs)
+Komplex Komplex::operator*(double rhs)
+{
+  return Komplex(realT*rhs,imagT*rhs);
+}
+
+Komplex Komplex::operator*(long int& rhs)
 {
   return Komplex(realT*rhs,imagT*rhs);
 }
@@ -92,7 +97,7 @@ void Komplex::Polardarstellung()
   }
 
   std::cout << Betrag << "(" << "cos(" << Winkel_Bogenm << ")" << " + "
-  << "i" << "sin(" << Winkel_Bogenm << "))" << std::endl;
+  << "i" << "sin(" << Winkel_Bogenm << "))";
 }
 
 KomplexND::KomplexND(unsigned long int s)

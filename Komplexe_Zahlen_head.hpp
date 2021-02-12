@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
-* \erstellen eines Datentyps Komplex das ermöglicht Komplexe Zahlen in der
+* |erstellen eines Datentyps Komplex das ermöglicht Komplexe Zahlen in der
 *  Form von (Realteil Imaginärteil) zu speichern
 *
 *Mit Komplex kann man Realteil und Imaginärteil eingeben und diese zurückgeben
@@ -56,7 +56,8 @@ class Komplex
     //@brief: überladen des * operator um damit eine Komplexe Zahl mit einem Skalaren zu multiplizieren
     //@parameter: nimmt den zu Multiplizierenden Skalaren als Fließkommerzahl
     //@return: gibt das Ergebnis des Realteils und Imaginaerteils als Komplexe Zahl zurück
-    Komplex operator*(double& rhs);
+    Komplex operator*(double rhs);
+    Komplex operator* (long int& rhs);
 
     //@brief: überladen des << operator um eine Komplexe Zahl in der consol auszugeben
     //@parameter: stream ist der Ausgabestrom und output ist die zu darstellende Komplexe Zahl
@@ -76,7 +77,7 @@ class Komplex
 };
 
 /**
-* \erstellen eines Datentyp KomplexND, der ein Vektor aus N Komplexen Zahlen
+* |erstellen eines Datentyp KomplexND, der ein Vektor aus N Komplexen Zahlen
 *  enthält
 *Man kann auf die einzelen Felder von KomplexND zugreifen und die gespeicherte
 *Komplexe Zahl zurückgeben. Weiterhin kann man die Anzahl der Element des
@@ -117,7 +118,7 @@ class KomplexND
 };
 
 /**
-* \ist eine leere Klasse die nur für die Fehlerbehandlung benutzt wurde
+* |ist eine leere Klasse die nur für die Fehlerbehandlung benutzt wurde
 *soll vorallem für fehler verwendet werden die außerhalb des definierten bereiches
 *gelangen
 *
