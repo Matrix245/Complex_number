@@ -14,8 +14,8 @@ int main()
 
   Komplex b(28,19);
   std::cout << "\nb: " << b << std::endl;
-  std::cout << "\n\na + b: " << a + b << std::endl;
-  std::cout << "\na * b: " << a * b << std::endl;
+  std::cout << "\n\na + b: " << a + Komplex(28,19) << std::endl;
+  std::cout << "\na * b: " << a * Komplex(28,19) << std::endl;
   std::cout << "\nb * 2: " << b * 2 << " (int)" << std::endl;
   std::cout << "\nb * 12.51" << b*r << " (double)"<< std::endl;
   std::cout << "\nPolardarstellung von b: ";

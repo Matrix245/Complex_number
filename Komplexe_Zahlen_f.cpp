@@ -9,7 +9,7 @@ Komplex::Komplex()
   imagT = 0.0;
 }
 
-Komplex::Komplex(double r,double i)
+Komplex::Komplex(const double& r,const double& i)
 {
   realT = r;
   imagT = i;
@@ -27,31 +27,31 @@ double Komplex::getImagT() const
   return imagT;
 }
 
-void Komplex::setKomplex(double r, double i)
+void Komplex::setKomplex(const double& r, const double& i)
 {
   realT = r;
   imagT = i;
 }
 
-Komplex Komplex::operator+(Komplex rhs)
+Komplex Komplex::operator+(const Komplex& rhs)
 {
 
   return Komplex(realT + rhs.getRealT(),imagT + rhs.getImagT());
 }
 
-Komplex Komplex::operator*(Komplex rhs)
+Komplex Komplex::operator*(const Komplex& rhs)
 {
   double realErg = (realT*rhs.getRealT()) - (imagT*rhs.getImagT());
   double imagErg = (realT*rhs.getImagT()) + (rhs.getRealT()*imagT);
   return Komplex(realErg,imagErg);
 }
 
-Komplex Komplex::operator*(double rhs)
+Komplex Komplex::operator*(const double& rhs)
 {
   return Komplex(realT*rhs,imagT*rhs);
 }
 
-Komplex Komplex::operator*(long int& rhs)
+Komplex Komplex::operator*(const int& rhs)
 {
   return Komplex(realT*rhs,imagT*rhs);
 }
@@ -67,7 +67,9 @@ std::ostream& operator<< (std::ostream& stream, const Komplex& output )
 std::istream& operator>> (std::istream& stream, Komplex& input )
 {
   //Fehlermeldung wenn es keine Double zahl ist (buchstaben Sonderzeichen Steuerzeichen Satzzeichen ungültig)
-
+  //ich habe hier keine Fehlermeldung gemacht weil mein System nicht abstürtzt
+  //PS: wollte es versuchen aber konnte ich leider nicht umsetzen weil ich nicht wusste wie ich die
+  //Datentypen vergleich soll.
   stream >>input.realT >> input.imagT;
   return stream;
 }
@@ -101,7 +103,7 @@ void Komplex::Polardarstellung()
   << "i" << "sin(" << Winkel_Bogenm << "))";
 }
 
-KomplexND::KomplexND(unsigned long int s)
+KomplexND::KomplexND(const unsigned long int& s)
 {
   //Fehlermeldung wenn s eine negative Zahl ist
   try
@@ -117,14 +119,14 @@ KomplexND::KomplexND(unsigned long int s)
   }
 }
 
-KomplexND::KomplexND(std::vector<Komplex>v)
+KomplexND::KomplexND(const std::vector<Komplex>&v)
 {
   size = v.size();
   vektorK = v;
 }
 
 
-Komplex KomplexND::atK(unsigned long int i)
+Komplex KomplexND::atK(const unsigned long int& i)
 {
   //Fehlermeldung wenn es außerhalb des index ist
   try{
@@ -146,7 +148,7 @@ Komplex KomplexND::atK(unsigned long int i)
   return Komplex(0,0);
 }
 
-unsigned long int KomplexND::Size()
+unsigned long int KomplexND::Size() const
 {
   return size;
 }

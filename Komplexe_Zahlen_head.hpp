@@ -26,7 +26,7 @@ class Komplex
     //@brief: (Konstruktor) durch eingabe des Realteil und Imaginärteil wird die Komplexe Zahl erzeugt
     //@parameter: r -> nimmt den Realteil | i -> nimmt den Imaginärteil
     //@return: keine
-    Komplex(double r, double i);
+    Komplex(const double& r, const double& i);
 
 
     //@brief: gibt Realteil aus
@@ -39,25 +39,25 @@ class Komplex
 
     //@brief: Setzt neue Zahlen für den Imaginaerteil und Realteil ein
     //@parameter: double r ist der Realteil und double i ist der Imaginaerteil | @return: keine zurückgabe
-    void setKomplex(double r, double i);
+    void setKomplex(const double& r, const double& i);
 
     //@brief: ueberlaede den + operator um damit Komplexe Zahlen zu addieren
     //@paramert: Komplex rhs = nimmt die zu addierende Komplexe Zahl
     //@return: gibt das Ergebnis der Addition vom Realteil und Imaginaerteil als Komplexe
     //Zahl zurueck
-    Komplex operator+(Komplex rhs);
+    Komplex operator+(const Komplex& rhs);
 
     //@brief: ueberladen des * operator um damit mit Komplexen Zahlen zu Multiplizieren
     //@paramert: Komplex rhs = nimmt die zu multiplizierende Komplexe Zahl
     //@return: gibt das Ergebnis der Multiplikation als Realteil und Imaginaerteil der Komplexen
     // Zahl zurueck
-    Komplex operator*(Komplex rhs);
+    Komplex operator*(const Komplex& rhs);
 
     //@brief: überladen des * operator um damit eine Komplexe Zahl mit einem Skalaren zu multiplizieren
-    //@parameter: nimmt den zu Multiplizierenden Skalaren als Fließkommerzahl
+    //@parameter: nimmt den zu Multiplizierenden Skalaren als Fließkommerzahl + Ganzzahl
     //@return: gibt das Ergebnis des Realteils und Imaginaerteils als Komplexe Zahl zurück
-    Komplex operator*(double rhs);
-    Komplex operator* (long int& rhs);
+    Komplex operator*(const double& rhs);
+    Komplex operator* (const int& rhs);
 
     //@brief: überladen des << operator um eine Komplexe Zahl in der consol auszugeben
     //@parameter: stream ist der Ausgabestrom und output ist die zu darstellende Komplexe Zahl
@@ -95,22 +95,22 @@ class KomplexND
     //@brief: (Konstruktor) Es wird die Größe des Vektors Eingegeben und der Nullvektor der Komplexen Zahlen erzeugt
     //        d.h. alle Element im Vektor ist die Komplex(0,0)
     //@parameter: s ist eine ganzzahl die für die größe des Vektors steht
-    KomplexND(unsigned long int s);
+    KomplexND(const unsigned long int& s);
 
     //@brief: (Konstruktor) Nimmt ein dynamisches Feld aus Komplexen Zahlen und initialisiert die size und vektorK
     //@parameter: v ist ein std::vector mit dem Datentyp Komplex (enthält nur Komplexe Zahlen) und stellt den Vektor dar
-    KomplexND(std::vector<Komplex>v);
+    KomplexND(const std::vector<Komplex>&v);
 
-    
+
     //@brief: greift auf einen Index im Feld vektorK zu
     //@parameter: i -> ist der Index auf dem man zugreifen möchte
     //@return: gibt die Komplex Zahl zurück die indiesem index gespeichert ist
-    Komplex atK(unsigned long int i);
+    Komplex atK(const unsigned long int& i);
 
     //@brief: gibt an wie viele Element der vektorK enthält
     //@parameter: keine
     //@return: gibt die size zurück -> enthält die anzahl an Elementen
-    unsigned long int Size();
+    unsigned long int Size() const;
 
     //@brief: überladen des + operators um zwei KomplexND mit einander zu addieren
     //@parameter: rhs -> der rechte summand der addition und rhs ist ein KomplexND
